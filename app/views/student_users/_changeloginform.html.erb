@@ -1,0 +1,27 @@
+<!-- Student Version -->
+%= form_for( @student_user, :url => changelogin_student_path(@student_user) ) do |f| %>
+  <% if @student_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student_user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @student_user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% f.hidden_field :name, :value => @student_user.first_name %>
+  <% f.hidden_field :password, :value => @student_user.password %>
+  <% f.hidden_field :password_confirmation, :value => @student_user.password_confirmation %>
+  <% f.hidden_field :password_digest, :value => @student_user.password_digest %>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.email_field :email %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<!-- Student Version -->

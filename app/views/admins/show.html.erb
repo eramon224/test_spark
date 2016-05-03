@@ -1,0 +1,40 @@
+<% if admin_logged_in? %>
+<% if @admin.super_admin? %>
+  <div align = "left"><%= button_to "Back", admins_super_admin_path, :method => "get" %></div>
+<%end%>
+<% if @admin.super_admin? == false %>
+  <div align = "left"><%= button_to "Back", admins_home_path, :method => "get" %></div>
+<%end%>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @admin.email %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%= @admin.name %>
+</p>
+<p>
+  <strong>Phone:</strong>
+  <%= @admin.phone %>
+</p>
+<p>
+  <strong>Right Signature URL:</strong>
+  <%= @admin.right_sig_url %>
+</p>
+<p>
+  <strong>Market Place URL:</strong>
+  <%= @admin.mkt_place_url %>
+</p>
+
+<!--%= link_to 'Edit', edit_admin_path(@admin) %> | -->
+<% if @admin.super_admin? == false %>
+<%= link_to 'Change Email', changelogin_admin_path(@admin) %>|
+<%end%>
+<%= link_to 'Change Password', changepassword_admin_path(@admin) %>|
+<% if @admin.super_admin? %>
+<%= link_to 'Update Contact Info', update_info_admin_path(@admin) %>|
+  <%= link_to 'Change Marketplace and Right Signature URLs', edit_urls_admin_path(@admin) %>|
+<%end%>
+<%end%>

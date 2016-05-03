@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+<%
+ right_signature_url = Admin.first.right_sig_url
+%>
+
+<%
+ marketplace_url = Admin.first.mkt_place_url
+%>
+<p>Sucessfully Logged in!</p>
+<div id="main_content">
+    <%= button_to "Logout", students_log_out_students_path, :method => "get" %>
+    
+	<div id="title"><h1>Student Page</h1></div>
+    <tbody>
+    <table>
+    <tr>
+        <td>First Name:</td>
+        <td><%= @student_current_user.first_name %></td>
+    </tr>
+    <tr>
+        <td>Last Name:</td>
+        <td><%= @student_current_user.last_name %></td>
+    </tr>
+    <tr>
+        <td>School level:</td>
+        <td><%= @student_current_user.school_level %></td>
+    </tr>
+    <tr>
+        <td>School name:</td>
+        <td><%= @student_current_user.school_name %></td>
+    </tr>
+    <tr>
+        <td>team:</td>
+        <td><%= @student_current_user.team_name %></td>
+    </tr>
+    <tr>
+        <td>pay code:</td>
+        <td><%= @student_current_user.pay_code %></td>
+    </tr>
+    <tr>
+        <td><%= link_to 'Edit', edit_student_user_path(@student_current_user) %></td>
+    </tr>
+    <tr>
+        <td><%= link_to 'Consent Form', right_signature_url, :target => "_blank" %> </td>
+    </tr>
+    <tr>
+        <td><%= link_to 'Payment Site', marketplace_url, :target => "_blank" %></td>
+    </tr>
+    </table>
+    </tbody>
+</div>
